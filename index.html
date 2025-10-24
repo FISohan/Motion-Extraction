@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Webcam WebGL Shader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="camera-app">
+        <div id="viewfinder">
+            <video id="webcam" autoplay playsinline style="display:none"></video>
+            <canvas id="glCanvas"></canvas>
+        </div>
+        <br>
+        <br>
+        <div id="controls-bar">
+            <div id="shader-selector-container">
+                <select id="shader-selector"></select>
+            </div>
+            <!-- Future controls can go here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

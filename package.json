@@ -1,0 +1,19 @@
+{
+  "name": "test-webshader",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "nodemon --ext js,json,frag server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

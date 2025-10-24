@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #1a1a1a; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%; /* Ensure body takes full height for child % heights */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+}
+
+#camera-app {
+    display: flex;
+    flex-direction: column;
+    background-color: #333; /* Darker camera body */
+    border-radius: 15px; /* Rounded corners for camera body */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6); /* Deeper shadow */
+    /* overflow: hidden; Removed to prevent clipping */
+    max-width: 90vw;
+    width: auto; /* Allow width to be determined by content/aspect */
+    height: auto; /* Allow height to adjust based on content */
+    position: relative; /* Establish positioning context for absolute children */
+}
+
+#viewfinder {
+    /* flex-grow: 1; Removed */
+    height: 80vh; /* Set viewfinder height to 80% of viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* Viewfinder background */
+    position: relative;
+    padding: 5px; /* Small bezel effect */
+    z-index: 1; /* Ensure viewfinder has a stacking context */
+    min-height: 0; /* Allow flex item to shrink */
+    margin-bottom: 60px; /* Make space for the absolutely positioned controls bar (adjust as needed) */
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+#controls-bar {
+    background-color: #222; /* Slightly darker than camera body */
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #444; /* Separator from viewfinder */
+    z-index: 2; /* Ensure controls bar is above viewfinder */
+    position: absolute; /* Position absolutely within #camera-app */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px; /* Fixed height for the controls bar */
+}
+
+#shader-selector-container {
+    position: static; /* No absolute/fixed positioning */
+    margin: 0; /* Remove previous margins */
+    background-color: transparent; /* No background here */
+    padding: 0; /* No padding here */
+    box-shadow: none; /* No shadow here */
+}
+
+#shader-selector {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #444; /* Darker dropdown */
+    color: #e0e0e0;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    min-width: 150px; /* Ensure a decent width */
+    text-align: center;
+}
+
+#shader-selector:hover {
+    border-color: #777;
+}
+
+#shader-selector:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #camera-app {
+        width: calc(100vw - 20px); /* Fill width of display with offset */
+        max-width: calc(100vw - 20px); /* Ensure it's not exceed viewport width */
+        height: auto; /* Allow height to adjust based on content */
+        max-height: calc(100vh - 20px); /* Still respect viewport height with offset */
+        border-radius: 0; /* No rounded corners on full width mobile */
+        margin: 10px; /* Tiny offset from screen edges */
+    }
+
+    #viewfinder {
+        height: 70vh; /* Slightly less height on mobile to give more space to controls */
+        padding: 0; /* Remove padding for full width */
+        margin-bottom: 50px; /* Adjust margin for mobile controls bar height */
+    }
+
+    #controls-bar {
+        padding: 8px 10px;
+        height: 50px; /* Adjust fixed height for mobile controls bar */
+    }
+
+    #shader-selector {
+        font-size: 0.9rem;
+        min-width: 120px;
+    }
+}
